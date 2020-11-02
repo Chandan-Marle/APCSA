@@ -6,17 +6,17 @@ public class Color{
     Random random = new Random();
     
     public int redCreation(){
-        int r = random.nextInt(upperbound);
-        return r;
+        int red = random.nextInt(upperbound);
+        return red;
     }
 
     public int greenCreation(){
-        int g = random.nextInt(upperbound);
-        return g;
+        int green = random.nextInt(upperbound);
+        return green;
     }
 
     public int blueCreation(){
-        int b = random.nextInt(upperbound);
-        return b;
+        int blue = random.nextInt(upperbound);
+        return blue;
     }
 }
