@@ -1,22 +1,52 @@
 import java.util.Random;
 
-public class Color{
-    int upperbound = 255;
+public class Color {
+
+    public int red, green, blue;
+    // private float percentShader;
+
 
     Random random = new Random();
     
-    public int redCreation(){
-        int red = random.nextInt(upperbound);
-        return red;
+    public Color(int red, int green, int blue){
+        red = this.red;
+        green = this.green;
+        blue = this.blue;
+    }
+    
+    public String createColor(){
+        red = createSegment();
+        green = createSegment();
+        blue = createSegment();
+        return "["+red+","+green+","+blue+"]";
     }
 
-    public int greenCreation(){
-        int green = random.nextInt(upperbound);
-        return green;
+    private int createSegment(){
+        return random.nextInt(255);
     }
 
-    public int blueCreation(){
-        int blue = random.nextInt(upperbound);
-        return blue;
+    public String colorShade(double shader){
+        double r = red;
+        double g = green;
+        double b = blue;
+        r = r*shader;
+        if (r>255) {
+            r = 255;
+        }        
+        g = g*shader;
+        if (g>255) {
+            g = 255;
+        }
+        b = b*shader;
+        if (b>255) {
+            b = 255;
+        }
+        red = (int) r;
+        green = (int) g;
+        blue = (int) b;
+        return "["+red+","+green+","+blue+"]";
     }
+ 
+
+
 }
