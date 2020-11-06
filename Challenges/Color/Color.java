@@ -2,51 +2,54 @@ import java.util.Random;
 
 public class Color {
 
-    public int red, green, blue;
-    // private float percentShader;
-
+    private int red, green, blue;
 
     Random random = new Random();
     
-    public Color(int red, int green, int blue){
-        red = this.red;
-        green = this.green;
-        blue = this.blue;
+    public Color(){
+        randomizeColor();;
     }
     
-    public String createColor(){
-        red = createSegment();
-        green = createSegment();
-        blue = createSegment();
-        return "["+red+","+green+","+blue+"]";
+    public void randomizeColor(){
+        red = randomizeSegment();
+        green = randomizeSegment();
+        blue = randomizeSegment();
     }
 
-    private int createSegment(){
+    private int randomizeSegment(){
         return random.nextInt(255);
     }
 
-    public String colorShade(double shader){
-        double r = red;
-        double g = green;
-        double b = blue;
-        r = r*shader;
-        if (r>255) {
-            r = 255;
-        }        
-        g = g*shader;
-        if (g>255) {
-            g = 255;
+    public void changeShade(double shadeAmp){
+        red = shadeChanger(red, shadeAmp);
+        green = shadeChanger(green, shadeAmp);
+        blue = shadeChanger(blue, shadeAmp);
+    }
+
+    private int shadeChanger(int color, double shadeAmp){
+        double newColor = color; 
+        newColor = newColor*shadeAmp;
+        if (newColor>255) {
+            newColor = 255;
         }
-        b = b*shader;
-        if (b>255) {
-            b = 255;
-        }
-        red = (int) r;
-        green = (int) g;
-        blue = (int) b;
+        return (int) newColor;
+    }
+    
+    public String getColor(){
         return "["+red+","+green+","+blue+"]";
     }
- 
 
+    public String getRed(){
+        return "["+red+"]";
+    }
+    
+    public String getGreen(){
+        return "["+green+"]";
+    }
 
+    public String getBlue(){
+        return "["+blue+"]";
+    }
+
+    
 }
